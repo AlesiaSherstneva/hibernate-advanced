@@ -11,6 +11,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "student")
 @Getter
@@ -30,6 +33,9 @@ public class Student {
 
     @Column(name = "email")
     private String email;
+
+    @Column(name = "file_name")
+    private Set<String> images = new HashSet<>();
 
     public Student(String firstName, String lastName, String email) {
         this.firstName = firstName;
