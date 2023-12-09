@@ -14,8 +14,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "student")
@@ -38,10 +38,9 @@ public class Student {
     private String email;
 
     @ElementCollection
-    @CollectionTable(name = "image",
-            joinColumns = @JoinColumn(name = "student_id"))
+    @CollectionTable(name = "image")
     @Column(name = "file_name")
-    private Set<String> images = new HashSet<>();
+    private List<String> images = new ArrayList<>();
 
     public Student(String firstName, String lastName, String email) {
         this.firstName = firstName;
