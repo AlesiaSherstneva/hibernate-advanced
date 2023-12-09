@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.luv2code</groupId>
-    <artifactId>collections-set</artifactId>
+    <artifactId>collections-list</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>collections-set</name>
+    <name>collections-list</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
