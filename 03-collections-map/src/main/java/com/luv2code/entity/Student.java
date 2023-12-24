@@ -7,15 +7,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OrderColumn;
+import jakarta.persistence.MapKeyColumn;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @Entity
 @Table(name = "student")
@@ -39,9 +39,9 @@ public class Student {
 
     @ElementCollection
     @CollectionTable(name = "image")
-    @OrderColumn
-    @Column(name = "file_name")
-    private List<String> images = new ArrayList<>();
+    @MapKeyColumn(name = "file_name")
+    @Column(name = "image_name")
+    private Map<String, String> images = new HashMap<>();
 
     public Student(String firstName, String lastName, String email) {
         this.firstName = firstName;
