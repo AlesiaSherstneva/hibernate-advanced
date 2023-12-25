@@ -7,14 +7,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.OrderBy;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
@@ -38,10 +38,10 @@ public class Student {
     private String email;
 
     @ElementCollection
-    @CollectionTable(name = "image",
-            joinColumns = @JoinColumn(name = "student_id"))
+    @CollectionTable(name = "image")
+    @OrderBy(clause = "file_name DESC")
     @Column(name = "file_name")
-    private Set<String> images = new HashSet<>();
+    private Set<String> images = new LinkedHashSet<>();
 
     public Student(String firstName, String lastName, String email) {
         this.firstName = firstName;
