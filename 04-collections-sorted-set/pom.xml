@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.luv2code</groupId>
-    <artifactId>collections-set</artifactId>
+    <artifactId>collections-sorted-set</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>collections-set</name>
+    <name>collections-sorted-set</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -24,7 +24,7 @@
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
-            <version>8.1.0</version>
+            <version>8.2.0</version>
         </dependency>
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
