@@ -8,14 +8,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MapKeyColumn;
+import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 @Entity
 @Table(name = "student")
@@ -41,7 +42,8 @@ public class Student {
     @CollectionTable(name = "image")
     @MapKeyColumn(name = "file_name")
     @Column(name = "image_name")
-    private Map<String, String> images = new HashMap<>();
+    @OrderBy
+    private SortedMap<String, String> images = new TreeMap<>();
 
     public Student(String firstName, String lastName, String email) {
         this.firstName = firstName;
