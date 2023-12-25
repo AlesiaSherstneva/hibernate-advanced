@@ -22,6 +22,7 @@ public class StudentMainDemo {
             theImages.add("photo2.jpg");
             theImages.add("photo3.jpg");
             theImages.add("photo4.jpg");
+            theImages.add("photo5.jpg");
 
             session.beginTransaction();
             System.out.println("Saving the student and images...");
