@@ -8,7 +8,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MapKeyColumn;
-import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,7 +22,7 @@ import java.util.TreeMap;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
+@ToString(exclude = "images")
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,7 +41,6 @@ public class Student {
     @CollectionTable(name = "image")
     @MapKeyColumn(name = "file_name")
     @Column(name = "image_name")
-    @OrderBy
     private SortedMap<String, String> images = new TreeMap<>();
 
     public Student(String firstName, String lastName, String email) {
