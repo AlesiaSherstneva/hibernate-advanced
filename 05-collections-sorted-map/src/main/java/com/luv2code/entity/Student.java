@@ -13,7 +13,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.SortComparator;
 
+import java.util.Comparator;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -41,7 +43,16 @@ public class Student {
     @CollectionTable(name = "image")
     @MapKeyColumn(name = "file_name")
     @Column(name = "image_name")
+    // @OrderBy
+    @SortComparator(ReversedStringComparator.class)
     private SortedMap<String, String> images = new TreeMap<>();
+
+    public static class ReversedStringComparator implements Comparator<String> {
+        @Override
+        public int compare(String o1, String o2) {
+            return o2.compareTo(o1);
+        }
+    }
 
     public Student(String firstName, String lastName, String email) {
         this.firstName = firstName;
