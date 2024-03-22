@@ -1,21 +1,16 @@
 package com.luv2code.entity;
 
-import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OrderColumn;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "student")
@@ -37,11 +32,8 @@ public class Student {
     @Column(name = "email")
     private String email;
 
-    @ElementCollection
-    @CollectionTable(name = "image")
-    @OrderColumn
-    @Column(name = "file_name")
-    private List<String> images = new ArrayList<>();
+    @Embedded
+    private Address homeAddress;
 
     public Student(String firstName, String lastName, String email) {
         this.firstName = firstName;
