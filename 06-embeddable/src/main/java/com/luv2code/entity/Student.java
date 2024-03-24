@@ -1,5 +1,7 @@
 package com.luv2code.entity;
 
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -34,6 +36,13 @@ public class Student {
 
     @Embedded
     private Address homeAddress;
+
+    @AttributeOverrides({
+            @AttributeOverride(name = "street", column = @Column(name = "billing_street")),
+            @AttributeOverride(name = "city", column = @Column(name = "billing_city")),
+            @AttributeOverride(name = "zipcode", column = @Column(name = "billing_zipcode"))
+    })
+    private Address billingAddress;
 
     public Student(String firstName, String lastName, String email) {
         this.firstName = firstName;
