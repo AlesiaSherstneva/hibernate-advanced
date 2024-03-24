@@ -17,10 +17,12 @@ public class StudentMainDemo {
         try (factory; Session session = factory.getCurrentSession()) {
             Student tempStudent = new Student("John", "Doe", "john@luv2code.com");
             Address homeAddress = new Address("Some Street", "Some City", "12345");
+            Address billingAddress = new Address("Some Street", "Some City", "12345");
 
             session.beginTransaction();
-            System.out.println("Saving the student and address...");
+            System.out.println("Saving the student and two addresses...");
             tempStudent.setHomeAddress(homeAddress);
+            tempStudent.setBillingAddress(billingAddress);
             session.persist(tempStudent);
             session.getTransaction().commit();
             System.out.println("Done!!!");
