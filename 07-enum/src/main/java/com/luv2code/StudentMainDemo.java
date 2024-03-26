@@ -1,5 +1,6 @@
 package com.luv2code;
 
+import com.luv2code.entity.Status;
 import com.luv2code.entity.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,19 +11,16 @@ public class StudentMainDemo {
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Student.class)
-                .addAnnotatedClass(Address.class)
                 .buildSessionFactory();
 
         try (factory; Session session = factory.getCurrentSession()) {
-            Student tempStudent = new Student("John", "Doe", "john@luv2code.com");
-            Address homeAddress = new Address("Some Street", "Some City", "12345");
-            Address billingAddress = new Address("Some Street", "Some City", "12345");
+            Student tempStudent1 = new Student("John", "Doe", "john@luv2code.com", Status.ACTIVE);
+            Student tempStudent2 = new Student("Mary", "Public", "mary@luv2code.com", Status.INACTIVE);
 
             session.beginTransaction();
-            System.out.println("Saving the student and two addresses...");
-            tempStudent.setHomeAddress(homeAddress);
-            tempStudent.setBillingAddress(billingAddress);
-            session.persist(tempStudent);
+            System.out.println("Saving students...");
+            session.persist(tempStudent1);
+            session.persist(tempStudent2);
             session.getTransaction().commit();
             System.out.println("Done!!!");
         }
