@@ -2,8 +2,6 @@ package com.luv2code.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -14,12 +12,12 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "student")
+@Table(name = "user")
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
-public class Student {
+public abstract class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -33,14 +31,9 @@ public class Student {
     @Column(name = "email")
     private String email;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "status")
-    private Status status;
-
-    public Student(String firstName, String lastName, String email, Status status) {
+    public User(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.status = status;
     }
 }
