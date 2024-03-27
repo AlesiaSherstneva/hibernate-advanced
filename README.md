@@ -11,3 +11,8 @@
 - element collections (sets, lists, maps, sorted sets, sorted maps);
 - embeddable classes;
 - enums mapping;
+- inheritance strategies:
+  - single table;
+  - table per class;
+  - joined;
+  - mapped super class
