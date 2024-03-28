@@ -1,5 +1,6 @@
 package com.luv2code.entity;
 
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,6 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
+@DiscriminatorValue(value = "INSTRUCTOR")
 @ToString
 public class Instructor extends User {
     private Double salary;
